@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onCtaClick, showStickyCta 
             className="flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 outline-none focus:outline-none"
           >
             <img 
-              src="https://via.placeholder.com/200x200/fe0534/FFFFFF?text=MC" 
+              src="/logo-mcars.png" 
               alt="McarStudio Logo" 
               className="w-10 h-10 md:w-14 md:h-14 object-contain"
             />
