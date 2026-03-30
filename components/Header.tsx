@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onCtaClick, showStickyCta 
             <img 
               src="/logo-mcars.png" 
               alt="McarStudio Logo" 
-              className="w-10 h-10 md:w-14 md:h-14 object-contain"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain"
             />
             <span className="sr-only">McarStudio - Home</span>
           </button>
