@@ -41,12 +41,12 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
       <div className="relative z-10 flex-grow flex flex-col justify-end">
         <div className="w-full px-4 md:px-10 lg:px-12 text-left pt-32 pb-8 md:pb-16">
           <div className="max-w-4xl">
-            <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium text-white tracking-tight leading-[1.1] md:leading-[1.2] font-unbounded uppercase drop-shadow-2xl animate-fade-up">
-              KOLIK VÁS BUDE STÁT<br /> PRVNÍ ŠKRÁBANEC ?
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-medium text-white tracking-tight leading-[1.1] md:leading-[1.2] font-unbounded uppercase drop-shadow-2xl animate-fade-up">
+              99,9% OCHRANA<br />VAŠEHO VOZU
             </h1>
             
             <p className="mt-4 md:mt-6 text-sm md:text-xl text-white/90 max-w-lg leading-relaxed font-extralight drop-shadow-md animate-fade-up delay-1">
-              Chraňte hodnotu svého vozu dřív,<br />než ji začne snižovat poškození laku.
+              Maximální ochrana na roky dopředu.<br />Důvěřuje nám 500+ majitelů vozů.
             </p>
             
             <div className="mt-8 md:mt-10 flex flex-col items-start animate-fade-up delay-2">
