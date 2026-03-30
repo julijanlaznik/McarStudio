@@ -1,0 +1,126 @@
+
+import React, { useEffect, useState, useRef } from 'react';
+import { MapPin, ExternalLink } from 'lucide-react';
+
+const AboutUsSection: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="py-24 md:py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          
+          {/* Left: Text & Map */}
+          <div className={`flex-1 space-y-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div>
+              <h2 className="text-3xl md:text-5xl font-bold text-black mb-6 tracking-tight font-sans">
+                Jsme McarStudio
+              </h2>
+              <p className="text-lg text-gray-500 leading-relaxed font-light font-sans max-w-xl">
+                Jsme tým nadšenců do aut, kteří věří v poctivou práci a precizní výsledek. Za roky zkušeností jsme polepili a ochránili stovky vozů všech značek – od běžných denních aut až po sportovní modely a luxusní vozy.
+              </p>
+            </div>
+
+            {/* Satellite Map Card */}
+            <div className="relative group max-w-md">
+              <div className="absolute -inset-2 bg-brand/10 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative bg-gray-50 rounded-[2rem] border border-gray-100 overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-500">
+                <div className="aspect-video w-full relative">
+                  {/* Google Satellite Map Iframe - Updated to Letňany */}
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2670.56156125223!2d14.522331012229207!3d50.13596377141509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x859e88b09077fdc5%3A0x759bdbc5703a6872!2sMCar%20Studio%20-%20Detailing%20automobilu%20-%20Polep%20ochranou%20f%C3%B3li%C3%AD!5e1!3m2!1scs!2scz!4v1774868033250!5m2!1scs!2scz" 
+                    className="absolute inset-0 w-full h-full contrast-[1.1] transition-all duration-700"
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <div className="p-6 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-brand/10 rounded-full flex items-center justify-center text-brand">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-black font-bold text-sm uppercase tracking-wider mb-0.5">Praha 9 - Letňany</p>
+                      <p className="text-gray-400 text-xs font-sans">Beranových 65, 199 00</p>
+                    </div>
+                  </div>
+                  <a 
+                    href="https://maps.app.goo.gl/KGFH6k4fqTQzkcVp6" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-brand hover:text-brand transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Overlapping Photos */}
+          <div className={`flex-1 relative min-h-[500px] md:h-[600px] w-full transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            {/* Mobile Grid / Desktop Scattered */}
+            <div className="grid grid-cols-2 gap-4 md:block h-full">
+              {/* Photo 1 */}
+              <div className="relative md:absolute md:left-0 md:top-0 w-full md:w-[55%] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl z-10 md:transform md:-rotate-6 border-4 md:border-8 border-white">
+                <img 
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" 
+                  alt="McarStudio Showroom" 
+                  className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              {/* Photo 2 */}
+              <div className="relative md:absolute md:right-4 md:top-12 w-full md:w-[50%] aspect-square rounded-[2rem] overflow-hidden shadow-xl z-20 md:transform md:rotate-3 border-4 md:border-8 border-white">
+                <img 
+                  src="https://images.unsplash.com/photo-1621359953476-b16299a78001?auto=format&fit=crop&q=80&w=800" 
+                  alt="Workshop Detailing" 
+                  className="w-full h-full object-cover grayscale-[0.1] hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              {/* Photo 3 */}
+              <div className="relative md:absolute md:left-12 md:bottom-8 w-full md:w-[45%] aspect-square rounded-[2rem] overflow-hidden shadow-xl z-30 md:transform md:rotate-6 border-4 md:border-8 border-white">
+                <img 
+                  src="https://images.unsplash.com/photo-1603584173870-7f3702c5c379?auto=format&fit=crop&q=80&w=800" 
+                  alt="Car Detailing Process" 
+                  className="w-full h-full object-cover grayscale-[0.1] hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              {/* Photo 4 */}
+              <div className="relative md:absolute md:right-0 md:bottom-0 w-full md:w-[55%] aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl z-40 md:transform md:-rotate-2 border-4 md:border-8 border-white">
+                <img 
+                  src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800" 
+                  alt="Luxury Car Result" 
+                  className="w-full h-full object-cover grayscale-[0.1] hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutUsSection;
